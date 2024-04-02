@@ -1,5 +1,6 @@
 import asyncio
 import pprint
+import pydantic
 
 from ai_extractor import extract
 from schemas import SchemaNewsWebsites, ecommerce_schema
@@ -29,8 +30,14 @@ if __name__ == "__main__":
         pprint.pprint(extracted_content)
 
     # Scrape and Extract with LLM
+    #asyncio.run(scrape_with_playwright(
+    #    url=wsj_url,
+    #    tags=["span"],
+    #    schema_pydantic=SchemaNewsWebsites
+    #))
+
     asyncio.run(scrape_with_playwright(
-        url=wsj_url,
+        url="https://www.bbc.com",
         tags=["span"],
         schema_pydantic=SchemaNewsWebsites
     ))

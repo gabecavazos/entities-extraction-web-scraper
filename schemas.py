@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel,ConfigDict, ValidationError
 
 ecommerce_schema = {
     "properties": {
@@ -10,6 +10,12 @@ ecommerce_schema = {
 }
 
 
-class SchemaNewsWebsites(BaseModel):
+class SchemaNewsWebsites(BaseModel):   
     news_headline: str
     news_short_summary: str
+
+    class Config:
+        arbitrary_types_allowed = True
+
+#class Model(BaseModel):
+#    model_config = ConfigDict(arbitrary_types_allowed=True)
